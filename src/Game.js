@@ -38,10 +38,3 @@ Game.prototype.bonusTotals = function(){
   return(total);
 };
 
-
-
-  // var frames = this.gameFrames;
-  // return this.bonuses().map(function(bonus){
-  //    try{ return (frames[bonus["bonus_index"]][bonus["bonus_amount"]]());
-  //   }catch(err){return 0;}
-  // }).reduce(function(a,b){return a + b }, 0);
