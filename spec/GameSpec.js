@@ -23,18 +23,32 @@ describe('Game', function() {
   });
 
   it ("can calculate a grand total", function(){
-    var frame = {total : function(){return 10}, bonus : function() { return {bonus_index: 1, bonus_amount : "total"}}};
-    var frameTwo = {total : function(){return 3}, bonus : function(){}};
-    game.addFrame(frame);
-    game.addFrame(frameTwo);
+    game.roll(10);
+    game.roll(3);
     expect(game.grandTotal()).toEqual(16);
   });
 
   it("doens't blow up if it can't add a bonus",function(){
-    var frame = {total : function(){return 10}, bonus : function() { return {bonus_index: 1, bonus_amount : "total"}}};
+    var frame = {total : function(){return 10}, bonus : function() { return [1,2]}};
     game.addFrame(frame);
     expect(game.grandTotal()).toEqual(10);
   });
 
+  it("can calculate a perfect game", function(){
+    var game = new Game;
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    game.roll(10);
+    expect(game.grandTotal()).toEqual(300);
+  });
 
 });
