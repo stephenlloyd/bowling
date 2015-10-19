@@ -1,5 +1,5 @@
 function Game() {
-  this.gameFrames = [new Frame(0), new Frame(1),new Frame(2),new Frame(3),new Frame(4),new Frame(5),new Frame(6),new Frame(7),new Frame(8),new Frame(9)];
+  this.gameFrames = [];
   this.rolls = [];
 };
 
@@ -11,7 +11,7 @@ Game.prototype.roll = function(pins){
 };
 
 Game.prototype.addFrame = function(frame) {
-  this.gameFrames.push(frame);
+  this.gameFrames.push(new frame(this.gameFrames.length));
 };
 
 Game.prototype.rollsTotal = function() {
@@ -37,4 +37,3 @@ Game.prototype.bonusTotal = function(){
   });
   return(total);
 };
-

@@ -6,7 +6,6 @@ function Frame(index) {
 
 Frame.prototype.registerGo = function(pinCount) {
   if (this.isOver()){throw("The frame is over.")};
-  if(this.turns == 0){this.firstPoints = pinCount}
   this.pins += pinCount;
   this.turns ++;
 };
