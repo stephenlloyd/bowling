@@ -14,7 +14,7 @@ Game.prototype.addFrame = function(frame) {
   this.gameFrames.push(frame);
 };
 
-Game.prototype.total = function() {
+Game.prototype.rollsTotal = function() {
   return this.gameFrames.reduce(function(a,b){return a+b.total()}, 0)
 };
 
@@ -25,10 +25,10 @@ Game.prototype.bonuses = function(){
 };
 
 Game.prototype.grandTotal = function(){
-  return this.total() + this.bonusTotals();
+  return this.rollsTotal() + this.bonusTotal();
 };
 
-Game.prototype.bonusTotals = function(){
+Game.prototype.bonusTotal = function(){
   var rolls = this.rolls;
   var total = 0
   this.bonuses().forEach(function(bonus){

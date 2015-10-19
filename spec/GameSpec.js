@@ -7,13 +7,13 @@ describe('Game', function() {
   it('knows its total', function() {
     var frame = {total : function(){return 10} };
     game.addFrame(frame);
-    expect(game.total()).toEqual(10);
+    expect(game.rollsTotal()).toEqual(10);
   });
 
   it('knows when it cant calculate a total', function(){
     var frame = { total : function(){return null} };
     game.addFrame(frame);
-    expect(game.total()).toEqual(0);
+    expect(game.rollsTotal()).toEqual(0);
   });
 
   it('knows what bonuses it has', function() {
