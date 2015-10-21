@@ -1,34 +1,34 @@
-function Game() {
+function Scorecard() {
   this.gameFrames = [];
   this.rolls = [];
 };
 
-Game.prototype.roll = function(pins){
+Scorecard.prototype.roll = function(pins){
   this.gameFrames.filter(function(frame){
     return !frame.isOver();
   })[0].registerGo(pins);
   this.rolls.push(pins);
 };
 
-Game.prototype.addFrame = function(frame) {
+Scorecard.prototype.addFrame = function(frame) {
   this.gameFrames.push(new frame(this.gameFrames.length));
 };
 
-Game.prototype.rollsTotal = function() {
+Scorecard.prototype.rollsTotal = function() {
   return this.gameFrames.reduce(function(a,b){return a+b.total()}, 0)
 };
 
-Game.prototype.bonuses = function(){
+Scorecard.prototype.bonuses = function(){
   return this.gameFrames.filter(function(frame)
     {if(frame.bonus()){return frame.bonus();}
     }).map(function(frame){return frame.bonus()});
 };
 
-Game.prototype.grandTotal = function(){
+Scorecard.prototype.grandTotal = function(){
   return this.rollsTotal() + this.bonusTotal();
 };
 
-Game.prototype.bonusTotal = function(){
+Scorecard.prototype.bonusTotal = function(){
   var rolls = this.rolls;
   var total = 0
   this.bonuses().forEach(function(bonus){
